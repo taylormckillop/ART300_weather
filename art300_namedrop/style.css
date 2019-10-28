@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Delius&display=swap');
+
+body, html{
+background-color: dimgrey;
+
+font-family: 'Delius', cursive;
+
+height: 100%;
+display: grid;
+
+}
+
+.main{
+margin: auto;
+height: 70vh;
+width: 30vw;
+
+background-image: url(/art300_namedrop/img/E27AD985-6973-45EA-96BF-B53A7F913340.jpeg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.name{
+    color: deeppink;
+    font-size: 5em;
+    text-align: center;
+
+}
