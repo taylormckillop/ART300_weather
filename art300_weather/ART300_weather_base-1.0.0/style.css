@@ -6,8 +6,9 @@ img{
     max-width: 100%;
     margin: auto;
     width: auto;
+
 }
-  
+
 .degree_symbol:not(:empty)::after {
     content: "°"
 }
@@ -17,7 +18,10 @@ img{
 
 #map {
 	width: 600px;
-    height: 600px;
+    height: 400px;
+    margin: auto;
+    margin-top: 50px;
+    
 }
 
 #zip{
@@ -28,9 +32,23 @@ img{
 font-weight: 400;
 font-style: normal;
     font-size: 2em;
+    margin-bottom: 0%;
+}
+.alerts{
+    width: 10%;
+    height: 40px;
+    background-color: rgb(244, 217, 200);
+    font-family: hobeaux, sans-serif;
+font-weight: 400;
+font-style: normal;
+    font-size: 1em;
+    margin-top: -.5%;
+    text-align: center;
+    color:rgb(0, 32, 44); 
+    
 }
 
-.Meta1{
+.meta1{
     text-align: center;
     font-family: hobeaux, sans-serif;
 font-weight: 400;
@@ -38,16 +56,18 @@ font-style: normal;
     font-size: 4em;
     margin-bottom: 0%;
     color: white;
+  
 
 }
-.Meta2{
+.meta2{
     text-align: center;
     font-family: hobeaux, sans-serif;
 font-weight: 400;
 font-style: normal;
     font-size: 2em;
-    margin-top: -5%;
+    margin-top: -4%;
     color: white;
+    margin-bottom: 0%;
 
 }
 .current{
@@ -58,16 +78,18 @@ font-style: normal;
     column-gap: 0;
     text-align: center;
     margin: auto;
-    margin-bottom: 50px;
+    margin-top: 0%;
  }
 
- .highlow{
+ .title{
     text-align: center;
     font-family: hobeaux, sans-serif;
 font-weight: 400;
 font-style: normal;
     font-size: 2em;
     color: white;
+    margin-top: 0%;
+
  }
 
  
@@ -78,8 +100,10 @@ font-style: normal;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     column-gap: 0;
-    text-align: center;
+
     margin: auto;
+
+
 
 }
 
@@ -88,8 +112,10 @@ font-style: normal;
     font-family: hobeaux, sans-serif;
 font-weight: 400;
 font-style: normal;
-    font-size: 7em;
+    font-size: 9em;
     color: white;
+    align-items: center;
+    text-align: center;
 }
 
 .real{
@@ -99,6 +125,7 @@ font-weight: 400;
 font-style: normal;
     font-size: 2em;
     color: white;
+    margin-top: 0%;
 }
 
 .info{
@@ -127,7 +154,7 @@ font-style: normal;
     font-family: hobeaux, sans-serif;
 font-weight: 400;
 font-style: normal;
-    font-size: 1.5em;
+    font-size: 2em;
     background: rgb(244, 216, 205);
     height: 30%;
     width: 70%;
@@ -157,15 +184,26 @@ font-style: normal;
     display: grid;
     width: 95%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     column-gap: 0;
     margin: auto;  
     align-content: center;
     background-color: white;
     margin-top: 5%;
+    margin-bottom: 50px;
 
 
 }
-
+.forecastdescription{
+    font-family: hobeaux, sans-serif;
+font-weight: 400;
+font-style: normal;
+    font-size: 1em;
+    text-align: center;
+    color: rgb(0, 32, 44);
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
 
 .day{
     font-family: hobeaux, sans-serif;
@@ -174,10 +212,10 @@ font-style: normal;
     font-size: 3em;
     text-align: center;
     color: rgb(0, 32, 44);
-    margin-top: 0%;
+    margin-top: 5%;
 }
 .weekly{
-    height: 339px;
+    height: 390px;
     border: solid 2px rgb(0, 32, 44);
 }
 .highlow{
@@ -186,32 +224,131 @@ font-style: normal;
     grid-template-rows: 1fr;
     column-gap: 0;
     margin: auto;  
-    width: auto;
-    align-content: center;
-    height: 10%;
+    width: 80%;
+    height: 70px;
     
-
-    
+  
 
 }
 .high{
     font-family: hobeaux, sans-serif;
     font-weight: 400;
     font-style: normal;
-        font-size: 1em;
-        text-align: auto;
+        font-size: 1.5em;
+        text-align: center;
         color: rgb(0, 32, 44);
-        border: solid 2px rgb(0, 32, 44);
+        margin-top: 10%;
+        
+        
+
 
 }
 
 .weekly img{
-    margin-left: 45px;
+    margin-left: 65px;
     margin-bottom: 70px;
+
+}
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0;
+   width: 100%;
+    height: 10%;
+
+}
+.circle{
+    height: 80px;
+    width: 80px;
+    border: white 5px solid;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    margin-left: 410px;
+}
+.sun{
+    font-family: hobeaux, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        font-size: 2em;
+        color: white;
+        margin: 0;
+        position: relative;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);  
+}
+.additional{
+    font-family: hobeaux, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        font-size: 2em;
+        color: white;
+        text-align: center;
+        margin-left: 15px;
+}
+.bottom{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0;
+    width: 100%;
+    height: 10%;
+}
+
+.sunriseone{
+    margin-left: 250px;
+    font-family: hobeaux, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        color: white;
+       margin-bottom: 1em;
+
+}
+
+.rise{
+    font-family: hobeaux, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        font-size: 2em;
+        color: white;
+       margin-bottom: 1em;
+       width: 50%;
+
+}
+
+.content{
+
+   display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0;
+    width: 90%;
+    height: auto;
 
 }
 
 
+.label{
+    font-family: hobeaux, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        font-size: 1.5em;
+        color: white;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        text-align: left;
+}
+.value{
+    font-family: hobeaux, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        font-size: 1.5em;
+        color: white;
+        margin-top: 20px;
+        text-align: left;
+}
 
 
 

@@ -27,93 +27,138 @@
 
     <body>
 
-
-        <input placeholder="Enter Your ZIP Code" name="name" id="zip" />
-        <p id="zip_display"></p>
-
-        <div class="Meta1">
-            <p>Manhattan, Kansas</p>
-        </div>
-        <div class="Meta2">
-            <p> Monday, October 21</p>
-        </div>
-        <div class="current">
-            <p class="highlow">40*</p>
-            <p class="highlow">60*</p>
-        </div>
-        <div class="temp">
-            <div class="currenttemp">45*</div>
-            <div class="currenttemp"><img src="/imgs/Partlycloudy.png" alt="PartlyCloudy"></div>
-        </div>
-        <div class="real">
-            <p>Okay, lets be honest: 41*</p>
-        </div>
-        <div class="info">
-            <p class="funny">Dampness: 0%</p>
-            <p class="funny">Stickiness: 64%</p>
-            <p class="funny">Likelihood of getting tan: 4</p>
-        </div>
-        <div class="description">
-            <p>You can kinda see, you're not going to sweat & you won't get blown around</p>
-        </div>
-        <div class="realdescription">
-            <p class="details">Partly cloudy skies</p>
-            <p class="details">High near 45*</p>
-            <p class="details">Light winds</p>
-        </div>
-        <div class="forecast">
-            <div class="weekly">
-                <p class="day">TUES</p>
-                <img src="/imgs/Clouds.png" alt="Cloudy">
-                <div class="highlow">
-                    <p class="high">40*</p>
-                    <p class="high">60*</p>
-                </div>
-            </div>
-            <div class="weekly">
-                <p class="day">WED</p>
-                <img src="/imgs/Partlycloudy.png" alt="PartlyCloudy">
-                <div class="highlow">
-                    <p class="high">40*</p>
-                    <p class="high">60*</p>
-                </div>
-            </div>
-            <div class="weekly">
-                <p class="day">THUR</p>
-                <img src="/imgs/Sun.png" alt="Sun">
-                <div class="highlow">
-                    <p class="high">40*</p>
-                    <p class="high">60*</p>
-                </div>
-            </div>
-            <div class="weekly">
-                <p class="day">FRI</p>
-                <img src="/imgs/Thunderstorm.png" alt="Storm">
-                <div class="highlow">
-                    <p class="high">40*</p>
-                    <p class="high">60*</p>
-                </div>
-            </div>
-            <div class="weekly">
-                <p class="day">SAT</p>
-                <img src="/imgs/Rain.png" alt="Rain">
-                <div class="highlow">
-                    <p class="high">40*</p>
-                    <p class="high">60*</p>
-                </div>
-            </div>
-            <div class="weekly">
-                <p class="day">SUN</p>
-                <img src="/imgs/Snowflake.png" alt="Snow">
-                <div class="highlow">
-                    <p class="high">40*</p>
-                    <p class="high">60*</p>
-                </div>
-            </div>
-            
-        </div>
         <div class="results" id="app">
-        
+            <input placeholder="Enter Your ZIP Code" v-on:input="zip_trigger" name="name" id="zip" />
+            <div class="alerts">
+                <p class="alert">{{error}}</p>
+            </div>
+            <div class="meta1">
+                <p>{{city}}, {{location.state}}</p>
+            </div>
+            <div class="meta2">
+                <p> {{time.day}}   {{time.hour_12}}:{{time.minute}}</p>
+            </div>
+            <div class="current">
+                <p class="title">{{current.temp.low}}°</p>
+                <p class="title">{{current.temp.high}}°</p>
+            </div>
+            <div class="temp">
+                <div class="currenttemp">{{current.temp.current}}°</div>
+                <div class="currenttemp"><img v-bind:src="'/imgs/' + current.description_icon + '.png'" v-bind:alt="current.description_long" /></div>
+            </div>
+            <div class="real">
+                <p>Okay, lets be honest: {{current.temp.feelslike}}°</p>
+            </div>
+            <div class="info">
+                <p class="funny">Dampness:{{current.rain}} {{current.snow}}</p>
+                <p class="funny">Stickiness: {{current.humidity}}</p>
+                <p class="funny">Likelihood of getting tan: {{current.uv}}</p>
+            </div>
+            <div class="description">
+                <p>What we're dealing with today:     {{current.description_long}}</p>
+            </div>
+            <div class="realdescription">
+                <p class="details">As low as {{current.temp.low}}°</p>
+                <p class="details">High near {{current.temp.high}}°</p>
+                <p class="details">Wind Speeds: {{current.wind.speed}}</p>
+            </div>
+            <div class="forecast">
+                <div class="weekly">
+                    <p class="day">{{forecast[0].weekday}}</p>
+                    <img v-bind:src="'/imgs/' + forecast[0].description_icon + '.png'" v-bind:alt="forecast[0].description_long" />
+                    <p class="forecastdescription">{{forecast[0].weather.description}}</p>
+                    <div class="highlow">
+                        <p class="high">{{forecast[0].min_temp}}°</p>
+                        <p class="high">{{forecast[0].max_temp}}°</p>
+                    </div>
+                </div>
+                <div class="weekly">
+                    <p class="day">{{forecast[1].weekday}}</p>
+                    <img v-bind:src="'/imgs/' + forecast[1].description_icon + '.png'" v-bind:alt="forecast[1].description_long" />
+                    <p class="forecastdescription">{{forecast[1].weather.description}}</p>
+                    <div class="highlow">
+                        <p class="high">{{forecast[1].min_temp}}°</p>
+                        <p class="high">{{forecast[1].max_temp}}°</p>
+                    </div>
+                </div>
+                <div class="weekly">
+                    <p class="day">{{forecast[2].weekday}}</p>
+                    <img v-bind:src="'/imgs/' + forecast[2].description_icon + '.png'" v-bind:alt="forecast[2].description_long" />
+                    <p class="forecastdescription">{{forecast[2].weather.description}}</p>
+                    <div class="highlow">
+                        <p class="high">{{forecast[2].min_temp}}°</p>
+                        <p class="high">{{forecast[2].max_temp}}°</p>
+                    </div>
+                </div>
+                <div class="weekly">
+                    <p class="day">{{forecast[3].weekday}}</p>
+                    <img v-bind:src="'/imgs/' + forecast[3].description_icon + '.png'" v-bind:alt="forecast[3].description_long" />
+                    <p class="forecastdescription">{{forecast[3].weather.description}}</p>
+                    <div class="highlow">
+                        <p class="high">{{forecast[3].min_temp}}°</p>
+                        <p class="high">{{forecast[3].max_temp}}°</p>
+                    </div>
+                </div>
+                <div class="weekly">
+                    <p class="day">{{forecast[4].weekday}}</p>
+                    <img v-bind:src="'/imgs/' + forecast[4].description_icon + '.png'" v-bind:alt="forecast[4].description_long" />
+                    <p class="forecastdescription">{{forecast[4].weather.description}}</p>
+                    <div class="highlow">
+                        <p class="high">{{forecast[4].min_temp}}°</p>
+                        <p class="high">{{forecast[4].max_temp}}°</p>
+                    </div>
+                </div>
+                <div class="weekly">
+                    <p class="day">{{forecast[5].weekday}}</p>
+                    <img v-bind:src="'/imgs/' + forecast[5].description_icon + '.png'" v-bind:alt="forecast[5].description_long" />
+                    <p class="forecastdescription">{{forecast[5].weather.description}}</p>
+                    <div class="highlow">
+                        <p class="high">{{forecast[5].min_temp}}°</p>
+                        <p class="high">{{forecast[5].max_temp}}°</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header">
+                <div class="circle">
+                    <p class="sun">Sun</p>
+                </div>
+                <p class="additional">Additional Conditions</p>
+            </div>
+            <div class="bottom">
+                <div class="sunriseone">
+                    <p class="rise">-RISE</p>
+                    <img src="/imgs/whitesunrise.png" alt="Sunrise">
+                    <p class="rise">{{current.sunrise}}</p>
+                </div>
+                <div class="sunrise">
+                    <p class="rise">-SET</p>
+                    <img src="/imgs/whitesunset.png" alt="Sunset">
+                    <p class="rise">{{current.sunset}}</p>
+                </div>
+                <div class="additionalconditions">
+                    <div class="content">
+                        <p class="label">Cloud Coverage</p>
+                        <p class="value">{{current.cloud_cover}}</p>
+                    </div>
+                    <div class="content">
+                        <p class="label">Wind Degree</p>
+                        <p class="value">{{current.wind.degree}}</p>
+                    </div>
+                    <div class="content">
+                        <p class="label">Dew Point</p>
+                        <p class="value">{{forecast[0].dewpt}}</p>
+                    </div>
+                    <div class="content">
+                        <p class="label">Pressure</p>
+                        <p class="value">{{current.pressure}}</p>
+                    </div>
+                    <div class="content">
+                        <p class="label">Air Quality</p>
+                        <p class="value">{{current.air_quality}}</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- <h1>TIME</h1>
             <p>{{time.day}}</p>
             <p>{{time.date}}</p>
@@ -183,13 +228,13 @@
 
             <p>{{forecast[0].dewpt}}</p>
             <p>{{forecast[0].pres}} mb</p> -->
-
+            <div id="map"></div>
         </div>
-        <div id="map"></div>
+        
 
 
 
 
-        <script src="/js/script.js" type="module"></script>
+        <script src="/js/script.js"></script>
     </body>
 </html>
