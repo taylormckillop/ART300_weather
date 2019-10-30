@@ -30,7 +30,7 @@
         <div class="results" id="app">
             <input placeholder="Enter Your ZIP Code" v-on:input="zip_trigger" name="name" id="zip" />
             <div class="alerts">
-                <p class="alert">{{error}}</p>
+                 {{error}}
             </div>
             <div class="meta1">
                 <p>{{city}}, {{location.state}}</p>
@@ -50,8 +50,8 @@
                 <p>Okay, lets be honest: {{current.temp.feelslike}}°</p>
             </div>
             <div class="info">
-                <p class="funny">Dampness:{{current.rain}} {{current.snow}}</p>
-                <p class="funny">Stickiness: {{current.humidity}}</p>
+                <p class="funny">Will you need an umbrella: {{forecast[0].pop}}% yes</p>
+                <p class="funny"> Dampness: {{current.humidity}}% sweaty </p>
                 <p class="funny">Likelihood of getting tan: {{current.uv}}</p>
             </div>
             <div class="description">
